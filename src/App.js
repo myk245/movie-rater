@@ -1,5 +1,7 @@
 import React from 'react'; 
 import './App.css';
+// import components
+import NavBar from './Components/NavBar'; 
 
 class App extends React.Component {
   state = {
@@ -24,6 +26,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <NavBar /> 
         <h1>Movie Rater</h1>
       </div>
     );
