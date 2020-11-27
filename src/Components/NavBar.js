@@ -10,8 +10,11 @@ class NavBar extends React.Component {
       input: ""
    }
 
-   handleChange = () => {
-      console.log(this.state.input.value)
+   handleChange = (event) => {
+      console.log(event.target.value)
+      this.setState({
+         input: event.target.value
+       })
    }   
 
    render() {
