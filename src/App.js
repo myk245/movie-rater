@@ -5,11 +5,12 @@ import NavBar from './Components/NavBar';
 
 class App extends React.Component {
   state = {
-    movies: []
+    movies: [], 
+    searchTerm: ""
   }
 
   componentDidMount() {
-    fetch("https://imdb-internet-movie-database-unofficial.p.rapidapi.com/search/inception", {
+    fetch(`https://imdb-internet-movie-database-unofficial.p.rapidapi.com/search/${this.state.searchTerm}`, {
       "method": "GET",
       "headers": {
         "x-rapidapi-key": process.env.REACT_APP_API_KEY,
@@ -23,10 +24,19 @@ class App extends React.Component {
       });
   }
 
+  handleSearchTerm = (event) => {
+    console.log(event.target.value)
+    this.setState({
+      searchTerm: event.target.value
+    })
+  } 
+
   render() {
     return (
       <div className="App">
-        <NavBar /> 
+        <NavBar
+          handleChange={this.handleSearchTerm}
+        /> 
         <h1>Movie Rater</h1>
       </div>
     );

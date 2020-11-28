@@ -5,19 +5,8 @@ import Nav from 'react-bootstrap/Nav';
 import { Form, FormControl } from 'react-bootstrap'; 
 import Button from 'react-bootstrap/Button';
 
-class NavBar extends React.Component {
-   state = {
-      input: ""
-   }
+const NavBar = (props) => {
 
-   handleChange = (event) => {
-      console.log(event.target.value)
-      this.setState({
-         input: event.target.value
-       })
-   }   
-
-   render() {
       return(
          <Container>
             <Navbar expand="lg" variant="light" bg="light">
@@ -27,14 +16,17 @@ class NavBar extends React.Component {
                   <Nav.Link href="#">Movies</Nav.Link>
                </Nav>
                <Form inline>
-                  <FormControl type="text" placeholder="Search"
-                  onChange={this.handleChange} className="mr-sm-2" />
+                  <FormControl
+                     type="text"
+                     placeholder="Search"
+                     onChange={props.handleChange} className="mr-sm-2"
+                  />
                   <Button variant="outline-info">Search Movies</Button>
                </Form>
             </Navbar>
          </Container>
-      )  
-   }
+   )  
+   
 }
 
 export default NavBar; 
