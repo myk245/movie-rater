@@ -19,9 +19,14 @@ const NavBar = (props) => {
                   <FormControl
                      type="text"
                      placeholder="Search"
-                     onChange={props.handleChange} className="mr-sm-2"
+                     value={props.searchTerm}
+                     onChange={props.handleSearchTerm}
+                     className="mr-sm-2"
                   />
-                  <Button variant="outline-info">Search Movies</Button>
+                  <Button
+                     variant="outline-info"
+                     onClick={props.handleSearchTerm}
+                  >Search Movies</Button>
                </Form>
             </Navbar>
          </Container>

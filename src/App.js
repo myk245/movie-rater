@@ -35,7 +35,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <NavBar
-          handleChange={this.handleSearchTerm}
+          searchTerm={this.state.searchTerm}
+          handleSearchTerm={this.handleSearchTerm}
         /> 
         <h1>Movie Rater</h1>
       </div>
