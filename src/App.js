@@ -9,7 +9,14 @@ class App extends React.Component {
     searchTerm: ""
   }
 
-  componentDidMount() {
+  handleSearchTerm = (event) => {
+    console.log(event.target.value)
+    this.setState({
+      searchTerm: event.target.value
+    })
+  } 
+
+  handleSubmit = () => {
     fetch(`https://imdb-internet-movie-database-unofficial.p.rapidapi.com/search/${this.state.searchTerm}`, {
       "method": "GET",
       "headers": {
@@ -24,19 +31,13 @@ class App extends React.Component {
       });
   }
 
-  handleSearchTerm = (event) => {
-    console.log(event.target.value)
-    this.setState({
-      searchTerm: event.target.value
-    })
-  } 
-
   render() {
     return (
       <div className="App">
         <NavBar
           searchTerm={this.state.searchTerm}
           handleSearchTerm={this.handleSearchTerm}
+          handleSubmit={this.handleSubmit}
         /> 
         <h1>Movie Rater</h1>
       </div>

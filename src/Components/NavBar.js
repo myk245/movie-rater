@@ -25,8 +25,8 @@ const NavBar = (props) => {
                   />
                   <Button
                      variant="outline-info"
-                     onClick={props.handleSearchTerm}
-                  >Search Movies</Button>
+                     onClick={props.handleSubmit}
+                  >Search Movies 🔍 </Button>
                </Form>
             </Navbar>
          </Container>
