@@ -2,11 +2,12 @@ import React from 'react';
 import './App.css';
 // import components
 import NavBar from './Components/NavBar'; 
+import MovieCard from './Components/MovieCard'; 
 
 class App extends React.Component {
   state = {
-    movies: [], 
-    searchTerm: ""
+    searchTerm: "", 
+    movieResults: []
   }
 
   handleSearchTerm = (event) => {
@@ -25,10 +26,15 @@ class App extends React.Component {
       }
     })
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => console.log(data.titles))
+
       .catch(err => {
         console.error(err);
       });
+  }
+
+  renderCard = () => {
+
   }
 
   render() {
@@ -40,6 +46,9 @@ class App extends React.Component {
           handleSubmit={this.handleSubmit}
         /> 
         <h1>Movie Rater</h1>
+        <div className="movie-container">
+          {}
+        </div>
       </div>
     );
   }
