@@ -1,0 +1,53 @@
+.movie-container {
+   display: flex; 
+   flex-flow: row wrap;
+   justify-content: space-evenly;
+   align-items: center;
+   padding: 0; 
+   margin: 0; 
+}
+
+.movie-card {
+   background-color: #f6f8fc;
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 28px;
+   color: darkslategray; 
+   margin-top: 5px;
+   margin-bottom: 5px;
+   padding: 0; 
+   border: #f4f4f4 1px solid;
+   border-radius: 8px;
+}
+
+.img-container {
+   align-content: center;
+   width: 200px; 
+   height: 280px; 
+}
+
+.movie-image {
+   object-fit: contain;
+   width: 200px; 
+   height: 280px; 
+   margin: auto;
+}
+
+.button {
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 15px;
+   text-decoration: none;
+   color: darkslategray; 
+   background: #fffdfd;
+   border: 1px black solid; 
+   border-radius: 8px;
+   padding: 5px; 
+}
+
+a:link, a:visited {
+   color: darkslategray;
+   text-decoration: none;
+}
+a:hover {
+   color: rgb(61, 61, 160);
+   text-decoration: none;
+}

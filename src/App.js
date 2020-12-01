@@ -1,5 +1,6 @@
 import React from 'react'; 
 import './App.css';
+import './Styles.css'; 
 // import components
 import NavBar from './Components/NavBar'; 
 import MovieCard from './Components/MovieCard'; 
