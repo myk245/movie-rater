@@ -7,7 +7,7 @@ import MovieCard from './Components/MovieCard';
 class App extends React.Component {
   state = {
     searchTerm: "", 
-    movieResults: []
+    movieResults: null
   }
 
   handleSearchTerm = (event) => {
@@ -26,15 +26,16 @@ class App extends React.Component {
       }
     })
       .then(response => response.json())
-      .then(data => console.log(data.titles))
+      // data is an object; titles is an array within the object
+      // .then(data => console.log(data.titles))
+      .then(data => this.setState({
+        movieResults: data.titles
+      }))
+      .then(() => console.log(this.state.movieResults))
 
       .catch(err => {
         console.error(err);
       });
-  }
-
-  renderCard = () => {
-
   }
 
   render() {
@@ -46,9 +47,6 @@ class App extends React.Component {
           handleSubmit={this.handleSubmit}
         /> 
         <h1>Movie Rater</h1>
-        <div className="movie-container">
-          {}
-        </div>
       </div>
     );
   }
