@@ -47,7 +47,7 @@ class App extends React.Component {
           handleSearchTerm={this.handleSearchTerm}
           handleSubmit={this.handleSubmit}
         /> 
-        <h1>Movie Rater</h1>
+        <h1 className="app-header">Movie Rater</h1>
         <div className="movie-container">
           {this.state.movieResults.map(movie =>
             <MovieCard

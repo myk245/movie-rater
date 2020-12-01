@@ -5,7 +5,7 @@ const MovieCard = (props) => {
    return (
       <div className="movie-card">
          {/* when a movie card is clicked, it brings you to the movie's show page with details -- fetch from the api using the movie's id (props.key)*/}
-         <p>{props.movie.title}</p>
+         <p className="movie-title">{props.movie.title}</p>
          <div className="img-container">
             <img
                className="movie-image"
