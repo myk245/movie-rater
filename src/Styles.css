@@ -13,14 +13,14 @@
 }
 
 .movie-card {
-   background-color: #f6f8fc;
+   background-color: #f4f7fc;
    font-family: Arial, Helvetica, sans-serif;
    width: 300px;
    height: 420px;
    font-size: 16px;
    color: darkslategray; 
-   margin-top: 5px;
-   margin-bottom: 5px;
+   margin-top: 15px;
+   margin-bottom: 15px;
    padding: 10px; 
    border: #f4f4f4 1px solid;
    border-radius: 8px;
@@ -29,7 +29,7 @@
 .movie-title {
    font-family: Arial, Helvetica, sans-serif;
    font-size: 25px;
-   color: black; 
+   color: rgba(0, 0, 0, 0.879); 
 }
 
 .img-container {
