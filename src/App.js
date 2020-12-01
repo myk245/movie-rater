@@ -7,7 +7,7 @@ import MovieCard from './Components/MovieCard';
 class App extends React.Component {
   state = {
     searchTerm: "", 
-    movieResults: null
+    movieResults:[]
   }
 
   handleSearchTerm = (event) => {
@@ -27,7 +27,7 @@ class App extends React.Component {
     })
       .then(response => response.json())
       // data is an object; titles is an array within the object
-      // .then(data => console.log(data.titles))
+      // .then(data => console.log(data))
       .then(data => this.setState({
         movieResults: data.titles
       }))
@@ -47,6 +47,15 @@ class App extends React.Component {
           handleSubmit={this.handleSubmit}
         /> 
         <h1>Movie Rater</h1>
+        <div className="movie-container">
+          {this.state.movieResults.map(movie =>
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+            /> 
+          ) 
+        }
+        </div>
       </div>
     );
   }
