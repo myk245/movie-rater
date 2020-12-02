@@ -1,10 +1,10 @@
 import React from 'react'; 
-import DetailModal from './DetailModal'; 
+import Modal from 'react-bootstrap/Modal'; 
 import '../Styles.css';
 
 class MovieCard extends React.Component {
    state = {
-      showDetails: false, 
+      modalOpen: false, 
       movieDetails: []
    }
    /* when "more details" button is pressed, fetch
@@ -22,7 +22,7 @@ class MovieCard extends React.Component {
          .then(response => response.json()) 
          // .then(data => console.log(data))
          .then(data => this.setState({
-            showDetails: true, 
+            modalOpen: true, 
             movieDetails: data
          }))
          .then(() => console.log(this.state))
@@ -40,6 +40,16 @@ class MovieCard extends React.Component {
                />
             </div>
             <button className="button" onClick={this.handleButtonClick}>See Details</button>
+
+            <Modal
+               show={this.state.modalOpen}
+               handleClose={() => this.setState({
+                  modalOpen: false
+               })}
+            >
+               <p>Hello!</p>
+            </Modal>
+            {/* {this.state.showDetails ? <DetailModal /> : null} */}
          </div>
       )
    }
