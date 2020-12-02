@@ -7,6 +7,7 @@
 .App {
   text-align: center;
   font-family: 'Roboto', sans-serif;
-  background-color: rgba(94, 116, 172, 0.386);
+  background-color: rgba(6, 52, 169, 0.411);
+  height: 100vh;
 }
 
