@@ -8,6 +8,6 @@
   text-align: center;
   font-family: 'Roboto', sans-serif;
   background-color: rgba(16, 47, 124, 0.411);
-  height: 100vh;
+  min-height: 100vh;
 }
 
