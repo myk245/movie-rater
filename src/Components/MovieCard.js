@@ -31,7 +31,9 @@ class MovieCard extends React.Component {
    render() {
       return (
          <div className="movie-card">
-            <p className="movie-title">{this.props.movie.title}</p>
+            <div className="movie-title-div">
+               <span className="movie-title">{this.props.movie.title}</span>
+            </div>
             <div className="img-container">
                <img
                   className="movie-image"
