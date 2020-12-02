@@ -1,4 +1,5 @@
 import React from 'react'; 
+import ModalHeader from 'react-bootstrap/esm/ModalHeader';
 import Modal from 'react-bootstrap/Modal'; 
 import '../Styles.css';
 
@@ -50,14 +51,27 @@ class MovieCard extends React.Component {
                   modalOpen: false
                })}
             >
-               <h1>{this.state.movieDetails.title}</h1>
-               <p>{this.state.movieDetails.year}</p>
-               <p>{this.state.movieDetails.length}</p>
-               <div className="img-container">
-                  <img className="movie-image" src={this.state.movieDetails.poster}></img>
+               <div className="modal-div">
+                  <Modal.Header closeButton>
+                     <Modal.Title>{this.state.movieDetails.title}</Modal.Title>
+                  </Modal.Header>
+
+                  <Modal.Body>
+                     <p>{this.state.movieDetails.year}</p>
+                     <p>{this.state.movieDetails.length}</p>
+                     <div className="img-container">
+                        <img className="movie-image" src={this.state.movieDetails.poster}></img>
+                     </div>
+                     <p>{this.state.movieDetails.plot}</p>
+                     <p>IMDB Rating: {this.state.movieDetails.rating}</p>
+                  </Modal.Body>
+
+                  <Modal.Footer>
+                     <button className="button">Like</button>
+                     <button className="button">Dislike</button>
+                  </Modal.Footer>
+
                </div>
-               <p>IMDB Rating: {this.state.movieDetails.rating}</p>
-               <p>{this.state.movieDetails.plot}</p>
             </Modal>
          </div>
       )

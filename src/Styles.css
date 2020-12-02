@@ -94,3 +94,7 @@ a:link, a:visited {
    left: 50%;
 }
 
+.modal-div {
+   padding: 20px 20px; 
+   text-align: center;
+}
