@@ -25,7 +25,7 @@ class MovieCard extends React.Component {
             modalOpen: true, 
             movieDetails: data
          }))
-         .then(() => console.log(this.state))
+         .then(() => console.log(this.state.movieDetails))
    }
 
    render() {
@@ -42,14 +42,21 @@ class MovieCard extends React.Component {
             <button className="button" onClick={this.handleButtonClick}>See Details</button>
 
             <Modal
+               className="modal"
                show={this.state.modalOpen}
-               handleClose={() => this.setState({
+               onHide={() => this.setState({
                   modalOpen: false
                })}
             >
-               <p>Hello!</p>
+               <h1>{this.state.movieDetails.title}</h1>
+               <p>{this.state.movieDetails.year}</p>
+               <p>{this.state.movieDetails.length}</p>
+               <div className="img-container">
+                  <img className="movie-image" src={this.state.movieDetails.poster}></img>
+               </div>
+               <p>IMDB Rating: {this.state.movieDetails.rating}</p>
+               <p>{this.state.movieDetails.plot}</p>
             </Modal>
-            {/* {this.state.showDetails ? <DetailModal /> : null} */}
          </div>
       )
    }
