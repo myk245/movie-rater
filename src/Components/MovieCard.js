@@ -1,12 +1,36 @@
 import React from 'react'; 
-import '../Styles.css'
+import DetailModal from './DetailModal'; 
+import '../Styles.css';
 
-class MovieCard extends React.Component{
+class MovieCard extends React.Component {
+   state = {
+      showDetails: false, 
+      movieDetails: []
+   }
+   /* when "more details" button is pressed, fetch
+   from the api using the movie's id*/
+   handleButtonClick = () => {
+      // console.log(this.props.movie.id)
+      fetch(`https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/${this.props.movie.id}`, {
+         "method": "GET",
+         "headers": {
+            "x-rapidapi-key": process.env.REACT_APP_API_KEY,
+            "x-rapidapi-host": "imdb-internet-movie-database-unofficial.p.rapidapi.com",
+            "useQueryString": true
+         }
+      })
+         .then(response => response.json()) 
+         // .then(data => console.log(data))
+         .then(data => this.setState({
+            showDetails: true, 
+            movieDetails: data
+         }))
+         .then(() => console.log(this.state))
+   }
 
    render() {
       return (
          <div className="movie-card">
-            {/* when a movie card is clicked, it brings you to the movie's show page with details -- fetch from the api using the movie's id (props.key)*/}
             <p className="movie-title">{this.props.movie.title}</p>
             <div className="img-container">
                <img
@@ -15,7 +39,7 @@ class MovieCard extends React.Component{
                   alt={this.props.movie.title}
                />
             </div>
-            <button className="button">See Details</button>
+            <button className="button" onClick={this.handleButtonClick}>See Details</button>
          </div>
       )
    }
