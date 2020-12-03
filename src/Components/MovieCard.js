@@ -5,7 +5,9 @@ import '../Styles.css';
 class MovieCard extends React.Component {
    state = {
       modalOpen: false, 
-      movieDetails: []
+      movieDetails: [], 
+      likes: 0, 
+      dislikes: 0
    }
    /* when "more details" button is pressed, fetch
    from the api using the movie's id*/
@@ -26,6 +28,18 @@ class MovieCard extends React.Component {
             movieDetails: data
          }))
          .then(() => console.log(this.state.movieDetails))
+   }
+
+   handleLikeClick = () => {
+      this.setState({
+         likes: this.state.likes++
+      })
+   }
+
+   handleDislikeClick = () => {
+      this.setState({
+         dislikes: this.state.dislikes-- 
+      })
    }
 
    render() {
@@ -49,6 +63,10 @@ class MovieCard extends React.Component {
                   modalOpen: false
                })}
                movieDetails={this.state.movieDetails}
+               likes={this.state.likes}
+               dislikes={this.state.dislikes}
+               likeClick={this.handleLikeClick}
+               dislikeClick={this.handleDislikeClick}
             />
          </div>
       )

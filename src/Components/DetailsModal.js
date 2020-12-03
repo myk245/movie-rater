@@ -29,8 +29,24 @@ const DetailsModal = (props) => {
             </Modal.Body>
 
             <Modal.Footer>
-               <button className="button">Like</button>
-               <button className="button">Dislike</button>
+               <div>
+                  <span className="like-dislike">{props.likes} Likes</span>
+                  <span className="like-dislike">{props.dislikes} Dislikes</span>
+               </div>
+               <div>
+                  <button
+                     className="button"
+                     onClick={props.likeClick}
+                  >
+                     Like 👍  
+                  </button>
+                  <button
+                     className="button"
+                     onClick={props.dislikeClick}
+                  >
+                     Dislike 👎 
+                  </button>
+               </div>
             </Modal.Footer>
 
          </div>
