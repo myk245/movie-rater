@@ -31,14 +31,17 @@ class MovieCard extends React.Component {
    }
 
    handleLikeClick = () => {
+      let newLikes = this.state.likes + 1
+
       this.setState({
-         likes: this.state.likes++
+         likes: newLikes
       })
    }
 
    handleDislikeClick = () => {
+      let newDislikes = this.state.dislikes + 1
       this.setState({
-         dislikes: this.state.dislikes-- 
+         dislikes: newDislikes
       })
    }
 
