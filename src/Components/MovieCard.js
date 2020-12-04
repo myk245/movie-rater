@@ -1,6 +1,7 @@
 import React from 'react'; 
 import DetailsModal from './DetailsModal'; 
 import '../Styles.css';
+import { API_BASE } from '../constants'; 
 
 class MovieCard extends React.Component {
    state = {
@@ -9,6 +10,23 @@ class MovieCard extends React.Component {
       likes: 0, 
       dislikes: 0
    }
+
+   // componentDidMount = () => {
+   //    let moviesInDatabase = this.props.moviesInDatabase; 
+
+   //    // pulls up an array of movies in database
+   //    // go through the movies and find the movie 
+   //    // that matches using movieId
+   //    let movieMatch = moviesInDatabase.find(movie => movie.movieId === this.props.movie.id) 
+      
+   //    fetch(`${API_BASE}/movies/${movieMatch.id}`)
+   //       .then(response => response.json())
+   //       .then(data => this.setState({
+   //          likes: data.likes, 
+   //          dislikes: data.dislikes
+   //       }))
+   //       .then(() => console.log(this.state.likes, this.state.dislikes))
+   // }
    /* when "more details" button is pressed, fetch
    from the api using the movie's id*/
    handleButtonClick = () => {

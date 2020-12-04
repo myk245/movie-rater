@@ -19,7 +19,7 @@ class App extends React.Component {
       .then(data => this.setState({
         moviesInDatabase: data 
       }))
-    .then(() => console.log(this.state.moviesInDatabase))
+      .then(() => console.log(this.state.moviesInDatabase))
   }
 
   handleSearchTerm = (event) => {
@@ -64,6 +64,7 @@ class App extends React.Component {
             <MovieCard
               key={movie.id}
               movie={movie}
+              moviesInDatabase={this.state.moviesInDatabase}
             /> 
           ) 
         }

@@ -12,8 +12,8 @@ const NavBar = (props) => {
             <Navbar expand="lg" variant="light" bg="light">
                <Navbar.Brand href="#home">Movie Rater</Navbar.Brand>
                <Nav className="mr-auto">
-                  <Nav.Link href="#">Favorites</Nav.Link>
-                  <Nav.Link href="#">Movies</Nav.Link>
+                  {/* <Nav.Link href="#">Favorites</Nav.Link>
+                  <Nav.Link href="#">Movies</Nav.Link> */}
                </Nav>
                <Form inline>
                   <FormControl
