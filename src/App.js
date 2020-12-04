@@ -1,6 +1,7 @@
 import React from 'react'; 
 import './App.css';
 import './Styles.css'; 
+import { API_BASE } from './constants';
 // import components
 import NavBar from './Components/NavBar'; 
 import MovieCard from './Components/MovieCard'; 
@@ -8,11 +9,21 @@ import MovieCard from './Components/MovieCard';
 class App extends React.Component {
   state = {
     searchTerm: "", 
-    movieResults:[]
+    movieResults: [], 
+    moviesInDatabase: []
+  }
+
+  componentDidMount = () => {
+    fetch(`${API_BASE}/movies`)
+      .then(response => response.json())
+      .then(data => this.setState({
+        moviesInDatabase: data 
+      }))
+    .then(() => console.log(this.state.moviesInDatabase))
   }
 
   handleSearchTerm = (event) => {
-    console.log(event.target.value)
+    // console.log(event.target.value)
     this.setState({
       searchTerm: event.target.value
     })
