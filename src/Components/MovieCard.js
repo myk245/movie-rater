@@ -69,6 +69,27 @@ class MovieCard extends React.Component {
                likes: newLikes
             }))
       } 
+
+      // if movieMatch is undefined, record does not exist in database so create a new record
+      if (typeof movieMatch === "undefined") {
+         fetch(`${API_BASE}/movies`, {
+            method: 'POST',
+            headers: {
+               'Content-Type': 'application/json',
+               'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+               title: this.props.movie.title,
+               movieId: this.props.movie.id,
+               likes: newLikes,
+               dislikes: 0
+            })
+         })
+            .then(response => response.json())
+            .then(data => this.setState({
+               likes: newLikes
+            }))
+      }
    }
 
    handleDislikeClick = () => {
@@ -82,7 +103,7 @@ class MovieCard extends React.Component {
             method: "PUT",
             headers: {
                "Content-Type": "application/json",
-               "Accepts": "application/json"
+               "Accept": "application/json"
             },
             body: JSON.stringify({
                dislikes: newDislikes
@@ -92,7 +113,27 @@ class MovieCard extends React.Component {
             .then(data => this.setState({
                dislikes: newDislikes
             }))
-      } 
+      }
+      
+      if (typeof movieMatch === "undefined") {
+         fetch(`${API_BASE}/movies`, {
+            method: 'POST',
+            headers: {
+               'Content-Type': 'application/json',
+               'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+               title: this.props.movie.title,
+               movieId: this.props.movie.id,
+               likes: 0,
+               dislikes: newDislikes
+            })
+         })
+            .then(response => response.json())
+            .then(data => this.setState({
+               dislikes: newDislikes
+            }))
+      }
    }
 
    render() {
