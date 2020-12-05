@@ -26,6 +26,19 @@ class MovieCard extends React.Component {
       }   
    }
 
+   componentDidUpdate = (prevProps) => {
+      if (prevProps.movie.id !== this.props.movie.id) {
+         let movieMatch = this.props.moviesInDatabase.find(movie => movie.movieId === this.props.movie.id)
+
+         fetch(`${API_BASE}/movies/${movieMatch.id}`)
+            .then(response => response.json())
+            .then(data => this.setState({
+               likes: data.likes,
+               dislikes: data.dislikes
+            }))
+      }
+   }
+
    /* when "more details" button is pressed, fetch
    from the api using the movie's id*/
    handleButtonClick = () => {
