@@ -12,8 +12,7 @@ class MovieCard extends React.Component {
    }
 
    componentDidMount = () => {
-      console.log(this.props)
-
+      // console.log(this.props)
       let movieMatch = this.props.moviesInDatabase.find(movie => movie.movieId === this.props.movie.id)
 
       // if movieMatch exists and is not undefined, fetch movie info
@@ -45,22 +44,55 @@ class MovieCard extends React.Component {
             modalOpen: true, 
             movieDetails: data
          }))
-         .then(() => console.log(this.state.movieDetails))
+         // .then(() => console.log(this.state.movieDetails))
    }
 
    handleLikeClick = () => {
       let newLikes = this.state.likes + 1
 
-      this.setState({
-         likes: newLikes
-      })
+      let movieMatch = this.props.moviesInDatabase.find(movie => movie.movieId === this.props.movie.id)
+
+      // if movieMatch exists and is not undefined, fetch movie info
+      if (typeof movieMatch !== "undefined") {
+         fetch(`${API_BASE}/movies/${movieMatch.id}`, {
+            method: "PUT",
+            headers: {
+               "Content-Type": "application/json",
+               "Accepts": "application/json"
+            },
+            body: JSON.stringify({
+               likes: newLikes
+            })
+         })
+            .then(response => response.json())
+            .then(data => this.setState({
+               likes: newLikes
+            }))
+      } 
    }
 
    handleDislikeClick = () => {
       let newDislikes = this.state.dislikes + 1
-      this.setState({
-         dislikes: newDislikes
-      })
+
+      let movieMatch = this.props.moviesInDatabase.find(movie => movie.movieId === this.props.movie.id)
+
+      // if movieMatch exists and is not undefined, fetch movie info
+      if (typeof movieMatch !== "undefined") {
+         fetch(`${API_BASE}/movies/${movieMatch.id}`, {
+            method: "PUT",
+            headers: {
+               "Content-Type": "application/json",
+               "Accepts": "application/json"
+            },
+            body: JSON.stringify({
+               dislikes: newDislikes
+            })
+         })
+            .then(response => response.json())
+            .then(data => this.setState({
+               dislikes: newDislikes
+            }))
+      } 
    }
 
    render() {
