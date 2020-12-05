@@ -11,22 +11,22 @@ class MovieCard extends React.Component {
       dislikes: 0
    }
 
-   // componentDidMount = () => {
-   //    let moviesInDatabase = this.props.moviesInDatabase; 
+   componentDidMount = () => {
+      console.log(this.props)
 
-   //    // pulls up an array of movies in database
-   //    // go through the movies and find the movie 
-   //    // that matches using movieId
-   //    let movieMatch = moviesInDatabase.find(movie => movie.movieId === this.props.movie.id) 
-      
-   //    fetch(`${API_BASE}/movies/${movieMatch.id}`)
-   //       .then(response => response.json())
-   //       .then(data => this.setState({
-   //          likes: data.likes, 
-   //          dislikes: data.dislikes
-   //       }))
-   //       .then(() => console.log(this.state.likes, this.state.dislikes))
-   // }
+      let movieMatch = this.props.moviesInDatabase.find(movie => movie.movieId === this.props.movie.id)
+
+      // if movieMatch exists and is not undefined, fetch movie info
+      if (typeof movieMatch !== "undefined") {
+         fetch(`${API_BASE}/movies/${movieMatch.id}`)
+            .then(response => response.json())
+            .then(data => this.setState({
+                  likes: data.likes,
+                  dislikes: data.dislikes
+               }))
+      }   
+   }
+
    /* when "more details" button is pressed, fetch
    from the api using the movie's id*/
    handleButtonClick = () => {

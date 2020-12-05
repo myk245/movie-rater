@@ -43,7 +43,7 @@ class App extends React.Component {
       .then(data => this.setState({
         movieResults: data.titles
       }))
-      .then(() => console.log(this.state.movieResults))
+      // .then(() => console.log(this.state.movieResults))
 
       .catch(err => {
         console.error(err);
