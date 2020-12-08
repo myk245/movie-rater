@@ -11,8 +11,11 @@ class MovieCard extends React.Component {
       dislikes: 0
    }
 
+   // right now the page has to be refreshed after first like/dislike
+   // otherwise it creates a new record instead of updating the record
+   // need some kind of validation 
    componentDidMount = () => {
-      // console.log(this.props)
+      // console.log(this.state)
       let movieMatch = this.props.moviesInDatabase.find(movie => movie.movieId === this.props.movie.id)
 
       // if movieMatch exists and is not undefined, fetch movie info
@@ -26,7 +29,7 @@ class MovieCard extends React.Component {
       }   
    }
 
-   componentDidUpdate = (prevProps) => {
+   componentDidUpdate = (prevProps, prevState) => {
       if (prevProps.movie.id !== this.props.movie.id) {
          let movieMatch = this.props.moviesInDatabase.find(movie => movie.movieId === this.props.movie.id)
 
